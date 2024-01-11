@@ -36,6 +36,24 @@ bool contains_cycle(LinkedList *list) {
     return false;
 }
 
+// create a linked list of the elements in arr in ascending sorted order
+LinkedList *sort(int arr[], int len) {
+    LinkedList *list = create_list();
+
+    for (int i = 0; i < len; i++) {
+        for (int j = i; j < len; j++) {
+            if (arr[j] > arr[i]) {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+        prepend(list, arr[i]);
+    }
+
+    return list;
+}
+
 int main(void) {
 
     // reverse list ===================================
@@ -95,4 +113,16 @@ int main(void) {
     }
 
     //free_list(&list_with_cycle); // this doesn't work
+
+    // sort =====================================
+
+    printf("Testing sort():\n");
+
+    int arr[] = {3, 2, 1, 4, 0};
+    LinkedList *sorted = sort(arr, 5);
+
+    printf("sorted list should be 0, 1, 2, 3, 4:\n");
+    print_list(sorted);
+
+    free_list(&sorted);
 }

@@ -8,3 +8,5 @@ The reverse() function requires you to invert the order of a given linked list *
 
 ## Detect a Cycle
 The contains_cycle() function will return true if a given linked list loops back into itself. The cycle will always start at the tail, but can connect back to any other node in the list.
+
+Once you've made contains_cycle(), you'll notice that free_list() doesn't work on a list with a cycle. How can you change free_list() to work properly, using your solution for contains_cycle()?
